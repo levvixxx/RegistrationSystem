@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Name | 2026</title>
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        {% for i in range(60) %}<div class="snowflake">•</div>{% endfor %}
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <h1>Name</h1>
+            <p class="subtitle">Описание</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Name</span>
+                    <span class="value">@Name</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Name</span>
+                    <span class="value">Name</span>
+                </div>
+            </div>
+
+            <a href="{{ url_for('login') }}" class="btn-primary">Войти в систему</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/snow.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        {% for i in range(60) %}<div class="snowflake">•</div>{% endfor %}
+    </div>
+
+    <div class="dashboard-container">
+        <div class="dashboard-card">
+            <h1>Привет, {{ user.username }}</h1>
+            <p>Добро пожаловать в панель управления</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Твой статус</span>
+                    <span class="value">{{ user.role }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">ID системы</span>
+                    <span class="value">#{{ user.id }}</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/download" class="btn-download active">
+                    Скачать файлы
+                </a>
+
+                {% if user.role == "Admin" %}
+                <a href="/adm" class="btn-admin">Админ-панель</a>
+                {% endif %}
+            </div>
+
+            <a href="{{ url_for('logout') }}" class="logout-link">Выйти из аккаунта</a>
+            <a href="{{ url_for('glav') }}" class="logout-link">Назад</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/snow.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        {% for i in range(60) %}<div class="snowflake">•</div>{% endfor %}
+    </div>
+
+    <div class="dashboard-container">
+        <div class="dashboard-card">
+            <h1>Это, {{ user.username }}</h1>
+            <p>Инфо</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">Его статус</span>
+                    <span class="value">{{ user.role }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">ID системы</span>
+                    <span class="value">#{{ user_id }}</span>
+                </div>
+            </div>
+
+            <a href="{{ url_for('glav') }}" class="logout-link">Назад</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/snow.js') }}"></script>
+</body>
+</html>
